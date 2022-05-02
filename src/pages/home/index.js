@@ -1,25 +1,13 @@
 import React from "react";
 import "./style.css";
-import {
-  FaReact,
-  FaAws,
-  FaDocker,
-  FaAngular,
-} from "react-icons/fa";
-import {
-  DiRedis,
-  DiMongodb,
-  DiPostgresql,
-} from "react-icons/di";
-import {
-  SiGraphql,
-  SiApachekafka,
-} from "react-icons/si";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import Typewriter from "typewriter-effect";
 import { introdata, meta } from "../../content_option";
 import { Link } from "react-router-dom";
+import Box from "@mui/material/Box";
 import Sidebar from "../../sidebar";
+import { skillData } from "./constants";
+import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 
 const gifs = [
@@ -45,7 +33,9 @@ export const Home = () => {
           <Sidebar open={true} />
           <div
             className="h_bg-image order-1 order-lg-2 h-100 "
-            onClick={() => setSelectedGif(gifs[Math.floor(Math.random() * gifs.length)])}
+            onClick={() =>
+              setSelectedGif(gifs[Math.floor(Math.random() * gifs.length)])
+            }
             style={{
               cursor: "pointer",
               backgroundImage: `url(${selectedGif})`,
@@ -77,6 +67,17 @@ export const Home = () => {
                 >
                   {introdata.description}
                 </Typography>
+                <Box display="flex" justifyContent="center" alignItems="center" my={2}>
+                  {Object.keys(skillData).map((i) => (
+                    <Box display="flex">
+                      <IconButton
+                        sx={{ cursor: "pointer", color: "var(--text-color)" }}
+                      >
+                        {skillData[i].icon}
+                      </IconButton>
+                    </Box>
+                  ))}
+                </Box>
                 <div className="intro_btn-action pb-5">
                   <Link to="/portfolio" className="text_2">
                     <div id="button_p" className="ac_btn btn ">

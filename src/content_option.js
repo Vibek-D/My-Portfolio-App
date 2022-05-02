@@ -2,7 +2,6 @@ import {
   FaGithub,
   FaTwitter,
   FaLinkedin,
-  FaFacebookF,
 } from "react-icons/fa";
 
 const logotext = "Vibek Dutta";
