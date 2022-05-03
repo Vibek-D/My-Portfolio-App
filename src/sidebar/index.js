@@ -10,9 +10,17 @@ import { socialprofils } from "../content_option";
 import Themetoggle from "../components/themetoggle";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import { VscGrabber, VscClose } from "react-icons/vsc";
+import { logotext } from "../content_option";
 
 function Sidebar({ open }) {
   const classes = useStyles();
+  const [isActive, setActive] = React.useState("false");
+
+  const handleToggle = () => {
+    setActive(!isActive);
+    document.body.classList.toggle("ovhidden");
+  };
 
   return (
     <>
@@ -40,6 +48,9 @@ function Sidebar({ open }) {
               backgroundColor: "var(--bg-color)",
             }}
           >
+            <IconButton className="menu__button  nav_ac" onClick={handleToggle}>
+              {!isActive ? <VscClose /> : <VscGrabber />}
+            </IconButton>
             <List
               disablePadding
               sx={{
@@ -66,7 +77,9 @@ function Sidebar({ open }) {
                         minWidth: "auto",
                       }}
                     >
-                      <IconButton sx={{ cursor: "pointer", color: "var(--text-color)" }} >
+                      <IconButton
+                        sx={{ cursor: "pointer", color: "var(--text-color)" }}
+                      >
                         {socialprofils[item].icon}
                       </IconButton>
                     </ListItemIcon>
